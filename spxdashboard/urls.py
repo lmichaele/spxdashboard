@@ -18,6 +18,6 @@ from django.contrib import admin
 
 app_name = 'purchase_requests'
 urlpatterns = [
-    url(r'^purchase_requests/', include('purchase_requests.urls')),
+    url(r'', include('purchase_requests.urls')),
     url(r'^admin/', admin.site.urls),
 ]
