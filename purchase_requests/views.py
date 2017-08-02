@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.http import Http404
 from django.utils import timezone
 from django.shortcuts import render, redirect
@@ -5,7 +6,7 @@ from django.http import HttpResponse
 from django.template import loader
 from .forms import RequestForm
 
-from .models import Request
+from .models import Request, UUTForm
 
 def index(request):
     test_list = Request.objects.order_by('Date')[:5]
@@ -16,6 +17,7 @@ def index(request):
     }
     return HttpResponse(template.render(context, request))
 
+'''
 def request_new(request):
     if request.method == "POST":
         form = RequestForm(request.POST)
@@ -28,4 +30,24 @@ def request_new(request):
     else:
         form = RequestForm()
     return render(request, 'purchase_requests/post_edit.html', {'form': form}) 
+'''
 
+def request_new(request):
+    title = 'New Purchase Request'
+    form = UUTForm(request.POST or None)
+    context = {
+    "title": title,
+    "form": form
+    }
+    
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+        instance.User = request.user
+
+        queryset = Request.objects.all().order_by('Date')
+        context = {
+            "queryset": queryset
+        }
+
+    return render(request, "purchase_requests/forms.html", context)

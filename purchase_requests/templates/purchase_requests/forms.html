@@ -1,0 +1,56 @@
+{% extends 'purchase_requests/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container">
+<div class='row'>
+<div class='col-md-2'>
+
+
+{% if title %}
+<h3 class='{% if title_align_center %}text-align-left{% endif %}'>{{ title }}</h3>
+{% endif %}
+
+
+<form method='POST' action=''>{% csrf_token %}
+
+{{ form|crispy }}
+
+<input class='btn btn-primary' type='submit' value='Add Request' />
+</form>
+
+</div>
+</div>
+</div>
+
+{% if queryset %}
+{% if qty != '' %}
+    <div class="container">
+        <div class="row">
+        <div class='col-md-8 col-md-offset-3'>
+        <h1>Unit Data Entered</h1>
+        <table class='table'>
+            <td><b>Part Number</b></td>
+            <td><b>Qty</b></td>
+            <td><b>WH</b></td>
+            <td><b>Requested By</b></td>
+            <td><b>Date</b></td>
+
+            {% for instance in queryset %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ instance.part_number }}</td>
+                    <td>{{ instance.qty }}</td>
+                    <td>{{ instance.WH }}</td>
+                    <td>{{ instance.User }}</td>
+                    <td>{{ instance.date }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        </div>
+        </div>
+    </div>
+{% endif %}
+{% endif %}
+{% endblock %}

@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django_tables2',
+    'crispy_forms',
     'purchase_requests.apps.PurchaseRequestsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
