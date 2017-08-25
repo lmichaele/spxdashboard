@@ -18,6 +18,9 @@ from django.contrib import admin
 
 app_name = 'purchase_requests'
 urlpatterns = [
+    url('^', include('django.contrib.auth.urls')),
     url(r'', include('purchase_requests.urls')),
+    url(r'', include('incoming_shipments.urls')),
+    url(r'', include('invoicer.urls')),
     url(r'^admin/', admin.site.urls),
 ]

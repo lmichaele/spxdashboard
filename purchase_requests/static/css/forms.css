@@ -1,0 +1,24 @@
+.container {
+   border: 0px solid black;
+   height: 200px;
+}
+
+table, th, td {
+   border: 1px;
+   top: 0px;
+}
+#wrapper {
+    border: 0px solid blue;
+    float:left;
+    padding: 5px;
+    width: 200px;
+}
+
+#tabel {
+    border: 0px solid red;
+    
+}
+
+#wrappor{
+    width: 500px;
+}

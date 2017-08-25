@@ -1,0 +1,26 @@
+li a {
+    color: green;
+}
+
+#table {
+    display: table;
+    margin: 5 auto;
+}
+
+.navbar-default .navbar-brand {
+    color: #F05B5B;
+}
+
+#h1 {
+    color: green;
+}
+
+h1 a {
+    left: auto;
+}
+
+body {
+    padding-left: 200px;
+    padding-right: 200px;
+}
+

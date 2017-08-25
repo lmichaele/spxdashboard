@@ -1,0 +1,33 @@
+{% extends 'purchase_requests/base.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+{% if queryset %}
+
+
+<div class="container">
+    
+    <div class="row">
+    <div class='col-md-8 col-md-offset-0'>
+    <div id="tabel">
+    <h4>Incoming Shipments</h4>
+    <table class='table'>    
+        <td><b>Ship Number</b></td>
+        <td><b>Supplier</b></td>
+        <td><b>Port ETA</b></td>
+        <td><b>Store ETA</b></td>
+        <td><b>Comment</b></td>
+
+{% for instance in queryset %}
+            <tr>
+                <td>{{ instance.ship_no }}</td>
+                <td>{{ instance.supplier }}</td>
+                <td>{{ instance.Port_ETA }}</td>
+                <td>{{ instance.Store_ETA }}</td>
+                <td>{{ instance.Comment }}</td>
+            </tr>
+{% endfor %}
+{% endif %}
+{% endblock %}
