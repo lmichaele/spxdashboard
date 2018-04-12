@@ -22,27 +22,58 @@
 
 {{ form|crispy }}
     
-
 <input class='btn btn-primary' type='submit' value='Add Request' />
 </form>
+    <br></br>
+<h5>Upload from CSV</h5>
+<form action="{% url 'upload_csv' %}" method="POST" enctype="multipart/form-data" class="form-horizontal"> 
+{% csrf_token %}
+    <div class="form-group">
+    <label for="name" class="col-md-0 col-sm-2 col-xs-12 control-label">File:</label>
+    <div class="col-md-8">
+        <input type="file" name='csv_file' id='csv_file' required="True" class="form-control">
+    </div>
+    <a href="#">
+          <span class="glyphicon glyphicon-info-sign"></span>
+        </a>
+</div>
+    
+<div class="form-group">                    
+    <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-20" style="margin-bottom:10px;">
+         <button class="btn btn-primary"> <span class="glyphicon glyphicon-upload" style="margin-right:10px;"></span>Upload</button>
+        
+    </div> 
+</div>
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+        </ul>
+</form>
+    
+
+    
 </span>
 </div>
 </div>
 {% if queryset %}
+{% if messages %}
 
+{% endif %}
 <span>
 <div class="container">
     
     <div class="row">
     <div class='col-md-8 col-md-offset-3'>
     <div id="tabel">
-    <h4>Purchase Requests</h4>
-    <table class='table'>    
+    <table class='table'>
+        <caption>Purchase Requests</caption>
         <td><b>#</b></td>
         <td><b>Part Number</b></td>
         <td><b>Qty</b></td>
         <td><b>WH</b></td>
-        <td><b>Requested By</b></td>
+        <td><b>OTP</b></td>
+        <td><b>User</b></td>
         <td><b>Date Added</b></td>
 
         {% for instance in queryset %}
@@ -51,9 +82,22 @@
                 <td>{{ instance.part_number }}</td>
                 <td>{{ instance.qty }}</td>
                 <td>{{ instance.WH }}</td>
+                <td>{{ instance.OTP }}</td>
                 <td>{{ instance.User }}</td>
                 <td>{{ instance.Date }}</td>
-            </tr>
+                <td>
+                <form action="{% url 'delete_view' instance.id %}" method="POST">
+                    {% csrf_token %}
+                    <a href="{% url 'delete_view' instance.id %}">
+                    <span class="glyphicon glyphicon-remove" type="submit" value="delete"></span>
+                    </a>
+                    </div>
+                </form>
+                </td>
+                
+                 
+        </tr>
+        
         {% endfor %}
     </table>
     </div>
@@ -64,5 +108,17 @@
 </span>
 </div>
 </div>
+
+{% else %}
+<div id="relative">
+No Requests Yet.
+</div>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
 {% endif %}
 {% endblock %}

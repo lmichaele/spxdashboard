@@ -1,24 +1,36 @@
-.container {
-   border: 0px solid black;
-   height: 200px;
-}
-
-table, th, td {
-   border: 1px;
+#tabel, th, td, h4 {
+   position: relative;
+   right: 30px;
+   border: 0px solid green;
+   padding: 15px;
    top: 0px;
 }
 #wrapper {
     border: 0px solid blue;
     float:left;
-    padding: 5px;
+    padding: 15px;
     width: 200px;
 }
 
-#tabel {
+#wrappor{
     border: 0px solid red;
-    
+    width: 100px;
 }
 
-#wrappor{
-    width: 500px;
+caption {
+    text-align: left;
+    margin-bottom: 5px;
+    font-size: 100%
+}
+
+#relative {
+    position: relative;
+    left: 380px;
+    top: 50px;
+    width: 300px;
+border: 0px solid #73AD21;
+}
+    
+#btn btn-primary {
+    color: #ffb3b3;
 }

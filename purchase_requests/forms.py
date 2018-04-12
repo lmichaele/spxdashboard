@@ -6,5 +6,5 @@ class RequestForm(forms.ModelForm):
 
     class Meta:
         model = Request
-        fields = ('part_number', 'qty', 'WH',)
+        fields = ('part_number', 'qty', 'WH', 'OTP')
                 
