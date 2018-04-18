@@ -33,13 +33,20 @@
     {% endfor %}
   </ul>
 {% endif %}
+
+<h4>Invoice to ConfirmPOLines</h4><a href="#">
+          <span class="glyphicon glyphicon-info-sign"></span>
+        </a>
     
-<form action="{% url 'spx_invoice' %}" enctype="multipart/form-data" method="POST" class="form-horizontal"> 
+    
+    
+    
+<form action="{% url 'spx_invoice' %}" method="POST" enctype="multipart/form-data" class="form-horizontal"> 
 {% csrf_token %}
 <div class="form-group">
     <label for="name" class="col-md-3 col-sm-3 col-xs-12 control-label">File: </label>
     <div class="col-md-8 ">
-        <input type="file" name="sp_csv_file" id="sp_csv_file" required="True" class="form-control">        
+        <input type="file" name='sp_csv_file' id='sp_csv_file' required="True" class="form-control">        
     </div>                    
 </div>
 <div class="form-group">

@@ -56,17 +56,25 @@ def upload_csv(request):
 
     try:    
         csv_file = request.FILES['csv_file']
+        print(type(csv_file))
+        print(csv_file)
 
         if not csv_file.name.endswith('.csv'):
             messages.error(request,'File is not CSV type')
             #return HttpResponseRedirect(reverse('/'))    
 
-        file_data = csv_file.read().decode("utf-8")  
+        file_data = csv_file.read().decode("utf-8")
+        print(type(file_data))
+        print(file_data)  
      
         lines = file_data.split("\n")
+        print(lines)
+        print(type(lines))
             #loop over the lines and save them in db. If error , store as string and then display
 
-        for line in lines:                        
+        for line in lines:
+            print(line)                        
+            print(type(line))
             fields = line.split(",")
             data_dict = {}
             data_dict["part_number"] = fields[0]

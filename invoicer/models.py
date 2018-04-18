@@ -20,4 +20,4 @@ class Sparex_Invoice(models.Model):
     eta = models.CharField(max_length=30, verbose_name="eta")
     #line = models.IntegerField(verbose_name="line")
     invoice = models.CharField(max_length=30, verbose_name="invoice")
-    tlv = models.CharField(max_length=20, verbose_name="tlv")
+    #tlv = models.CharField(max_length=20, verbose_name="tlv")
